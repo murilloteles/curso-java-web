@@ -1,6 +1,8 @@
 # curso-java-web
 Modelo de projeto para curso de extensão - 'Desenvolvimento Java Web'
+
 Objetivo do curso:
+
 Preparar o aluno para atuação no desenvolvimento de aplicativos web, demonstrando os principais 
 frameworks e ferramentas utilizadas no mercado brasileiro e introduzir a pratica do desenvolvimento 
 Java com foco nos seguintes itens:
