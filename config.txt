@@ -1,4 +1,4 @@
-* Configuração Tomcat e Weld
+#### Configuração Tomcat e Weld ######
 Guia de referência: https://docs.jboss.org/weld/reference/2.3.1.Final/en-US/html_single/
 	- 18.3.1. Tomcat
 Arquivo META-INF/context.xml
@@ -7,7 +7,7 @@ Arquivo META-INF/context.xml
 	<Resource name="BeanManager" auth="Container" type="javax.enterprise.inject.spi.BeanManager" factory="org.jboss.weld.resources.ManagerObjectFactory"/>
 </Context>
 
-arquivo web.xml (do servidor)
+arquivo web.xml
 <resource-env-ref>
    <resource-env-ref-name>BeanManager</resource-env-ref-name>
    <resource-env-ref-type>
@@ -16,3 +16,11 @@ arquivo web.xml (do servidor)
 </resource-env-ref>
 
 Tomcat only allows you to bind entries to java:comp/env, so the BeanManager will be available at java:comp/env/BeanManager
+
+Dependencias:
+
+<dependency>
+    <groupId>org.jboss.weld.servlet</groupId>
+    <artifactId>weld-servlet-core</artifactId>
+    <version>2.3.1.Final</version>
+</dependency>

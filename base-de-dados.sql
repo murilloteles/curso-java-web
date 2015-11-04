@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `curso-java-web`.`UF` (
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `curso-java-web`.`categoria` (
-  `id_categoria` INT NOT NULL AUTO_INCREMENT,
+  `id_categoria` BIGINT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_categoria`))
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `curso-java-web`.`anuncio` (
   `titulo` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(5000) NOT NULL,
   `sigla_uf` VARCHAR(2) NOT NULL,
-  `id_categoria` INT NOT NULL,
+  `id_categoria` BIGINT NOT NULL,
   PRIMARY KEY (`id_anuncio`),
   INDEX `fk_anuncio_uf_idx` (`sigla_uf` ASC),
   INDEX `fk_anuncio_categoria_idx` (`id_categoria` ASC),

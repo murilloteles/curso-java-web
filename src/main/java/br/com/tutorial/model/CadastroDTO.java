@@ -1,7 +1,8 @@
 package br.com.tutorial.model;
 
 import java.io.Serializable;
-import java.util.Date;
+
+import br.com.tutorial.model.entity.Anuncio;
 
 public class CadastroDTO implements Serializable {
 
@@ -10,16 +11,19 @@ public class CadastroDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 2L;
 	
-	private Date data;
-	
-	
-	public Date getData() {
-		return data;
+	private Anuncio anuncio;
+
+	public Anuncio getAnuncio() {
+		if(anuncio == null){
+			this.anuncio = new Anuncio();
+		}
+		return anuncio;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setAnuncio(Anuncio anuncio) {
+		this.anuncio = anuncio;
 	}
+	
 	
 
 }
