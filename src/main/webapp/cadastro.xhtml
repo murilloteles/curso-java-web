@@ -1,11 +1,56 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-    <ui:decorate template="/layout/padrao.xhtml">
-        <ui:define name="conteudo">
-        	
-            <h:outputText value="#{cadastro.message}"></h:outputText>
-            
-        </ui:define>
-    </ui:decorate>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="/layout/padrao.xhtml">
+	<ui:define name="conteudo">
+		<div align="center">
+			<p:panelGrid columns="1"
+				style="margin-top:0px;width:500px;height:600px">
+				<h:form>
+					<h3>Cadastre Seu Anuncio!</h3>
+					<h:panelGrid columns="2" style="padding:40px">
+						<h:outputText value="Categoria:" />
+	            		<p:selectOneMenu value="#{cadastro.cdto.anuncio.categoria}">
+	            			<f:selectItems value="#{cadastro.categorias}" var="cat" itemValue="#{cat}" itemLabel="#{cat.nome}"></f:selectItems>
+	            		</p:selectOneMenu>
+
+						<p:outputLabel value="Título * " for="titulo" />
+						<p:inputText id="titulo" value="#{cadastro.cdto.anuncio.titulo}" />
+
+						<p:outputLabel value="Descrição * " for="desc" />
+						<p:inputTextarea rows="6" cols="33" id="desc" value="#{cadastro.cdto.anuncio.descricao}"/>
+
+						<p:outputLabel value="Estado * " for="estado" />
+						<p:selectOneMenu id="estado" value="#{cadastro.cdto.anuncio.estado}">
+							<f:selectItem itemLabel="Selecione" itemValue="" />
+							<f:selectItems value="#{cadastro.ufs}" var="uf" itemValue="#{uf.sigla}" itemLabel="#{uf.nome}"/>
+						</p:selectOneMenu>
+
+					</h:panelGrid>
+					<p:separator style="width:500px" />
+					<h3>Suas Informações</h3>
+
+					<h:panelGrid columns="2" style="padding:20px">
+
+						<p:outputLabel value="Eu sou " for="pessoa" />
+						<p:selectOneRadio id="pessoa" value="#{cadastro.cdto.anuncio.pessoa}">
+							<f:selectItem itemLabel="Particular" itemValue="particular" />
+							<f:selectItem itemLabel="Profissional" itemValue="profissional" />
+						</p:selectOneRadio>
+
+						<p:outputLabel value="Verifique seu e-mail * " for="email" />
+						<p:inputText id="email" value="" />
+
+					</h:panelGrid>
+
+					<div align="right">
+						<p:commandButton value="Publicar" action="#{cadastro.salvar}"/>
+					</div>
+				</h:form>
+			</p:panelGrid>
+		</div>
+	</ui:define>
+</ui:decorate>
 </html>

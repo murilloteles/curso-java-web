@@ -1,24 +1,43 @@
 package br.com.tutorial.controller;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 
-@ApplicationScoped
+import br.com.tutorial.model.CadastroDTO;
+import br.com.tutorial.model.dao.CadastroDAO;
+import br.com.tutorial.model.entity.Categoria;
+import br.com.tutorial.model.entity.UF;
+
 @ManagedBean(name="cadastro")
+@RequestScoped
 public class CadastroController {
 	
-	private Date data;
+	private CadastroDTO cdto = new CadastroDTO();
 	
-	@PostConstruct
-	public void init() {
-		data = Calendar.getInstance().getTime();
+	public List<UF> getUfs(){
+		CadastroDAO dao = new CadastroDAO();
+		return dao.getUfs();
+	}
+	
+	public List<Categoria> getCategorias(){
+		CadastroDAO dao = new CadastroDAO();
+		return dao.getCategorias();
+	}
+	
+	public String salvar(){
+		CadastroDAO dao = new CadastroDAO();
+		dao.salvarAnuncio(cdto.getAnuncio());
+		return "index";
+	}
+	
+	public CadastroDTO getCdto() {
+		return cdto;
 	}
 
-	public String getMessage() {
-		return "Cadastro iniciado: "  + data;
+	public void setCdto(CadastroDTO cdto) {
+		this.cdto = cdto;
 	}
+
 }
