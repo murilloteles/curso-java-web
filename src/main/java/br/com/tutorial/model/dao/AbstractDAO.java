@@ -73,20 +73,20 @@ public abstract class AbstractDAO<T extends BaseEntity, PK extends Serializable>
 	 * 
 	 * @param entity
 	 */
-	public void inserir(T entity) {
+	protected void inserir(T entity) {
 		em.getTransaction().begin();
 		em.persist(entity);
 		em.getTransaction().commit();
 	}
 
-	public T atualizar(T entity) {
+	protected T atualizar(T entity) {
 		em.getTransaction().begin();
 		em.merge(entity);
 		em.getTransaction().commit();
 		return entity;
 	}
 
-	public T inserirOuAtualizar(T entity) {
+	protected T inserirOuAtualizar(T entity) {
 		if (entity != null) {
 			if (entity.getId() == null) {
 				this.inserir(entity);
@@ -97,7 +97,7 @@ public abstract class AbstractDAO<T extends BaseEntity, PK extends Serializable>
 		return entity;
 	}
 
-	public T buscar(PK primaryKey) {
+	protected T buscar(PK primaryKey) {
 		return (T) em.find(entityType, primaryKey);
 	}
 
@@ -107,7 +107,7 @@ public abstract class AbstractDAO<T extends BaseEntity, PK extends Serializable>
 	 * @param primaryKey
 	 * @return
 	 */
-	public boolean existe(PK primaryKey) {
+	protected boolean existe(PK primaryKey) {
 		return em.find(entityType, primaryKey) != null;
 	}
 
@@ -116,7 +116,7 @@ public abstract class AbstractDAO<T extends BaseEntity, PK extends Serializable>
 	 * 
 	 * @param id
 	 */
-	public void apagarPorId(PK id) {
+	protected void apagarPorId(PK id) {
 		em.getTransaction().begin();
 		em.remove(buscar(id));
 		em.getTransaction().commit();
@@ -127,13 +127,13 @@ public abstract class AbstractDAO<T extends BaseEntity, PK extends Serializable>
 	 * 
 	 * @param entity
 	 */
-	public void apagar(T entity) {
+	protected void apagar(T entity) {
 		em.getTransaction().begin();
 		em.remove(entity);
 		em.getTransaction().commit();
 	}
 
-	public List<T> buscarTodos() {
+	protected List<T> buscarTodos() {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<T> cq = cb.createQuery(entityType);
 		Root<T> rootEntry = cq.from(entityType);
