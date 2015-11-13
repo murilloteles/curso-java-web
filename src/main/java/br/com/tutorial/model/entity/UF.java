@@ -2,8 +2,16 @@ package br.com.tutorial.model.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+/**
+ * Entidade que armazena as informações da unidade federativa
+ * @author angelo
+ *
+ */
 @Entity
 @Table(name="UF")
 public class UF implements Serializable{

@@ -10,9 +10,16 @@ import br.com.tutorial.model.entity.Anuncio;
 import br.com.tutorial.model.entity.Categoria;
 import br.com.tutorial.model.entity.UF;
 
+/**
+ * Classe resposável pela manipulção das informações de cadastro na base de dados.
+ * @author angelo
+ *
+ */
+//NOTA Não foi utilizado nenhum padrão de projeto intencionalmente, explicarei em sala de aula com usar e as vantagens
 public class CadastroDAO {
-	private static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("ANUNC-LOJA");
+	private static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("PU-UDF");
 	private EntityManager em;
+	
 	
 	public void salvarAnuncio(Anuncio anuncio){
 		em = getEntityManager();
@@ -22,17 +29,17 @@ public class CadastroDAO {
 	}
 	
 	public List<UF> getUfs(){
-		List<UF> ufs = getEntityManager().createQuery("from UF").getResultList();
-		return ufs;		
+		List ufs = getEntityManager().createQuery("from UF").getResultList();
+		return ufs;
 	}
 	
 	public List<Categoria> getCategorias(){
-		List<Categoria> cats = getEntityManager().createQuery("from Categoria").getResultList();
-		return cats;		
+		List categorias = getEntityManager().createQuery("from Categoria").getResultList();
+		return categorias;
 	}
 	
-	public EntityManager getEntityManager(){
-		return FACTORY.createEntityManager();
+	public EntityManager getEntityManager() {
+		return EMF.createEntityManager();
 	}
-
+	
 }
