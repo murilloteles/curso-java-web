@@ -7,6 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 
 import br.com.tutorial.model.CadastroDTO;
+import br.com.tutorial.model.entity.Categoria;
 import br.com.tutorial.model.entity.UF;
 import br.com.tutorial.model.service.CadastroAnuncioService;
 
@@ -31,6 +32,10 @@ public class CadastroController implements Serializable {
 
 	public List<UF> getUfs(){
 		return service.getUfs();
+	}
+	
+	public List<Categoria> getCategorias(){
+		return service.getCategorias();
 	}
 	
 	public String salvar(){
