@@ -34,13 +34,9 @@ public class Anuncio implements Serializable {
 	@Column(name="pessoa")
 	private String pessoa;
 	
-	public String getPessoa() {
-		return pessoa;
-	}
-
-	public void setPessoa(String pessoa) {
-		this.pessoa = pessoa;
-	}
+	@ManyToOne
+	@JoinColumn(referencedColumnName="id_usuario", name="id_usuario")
+	private Usuario usuario;
 
 	@ManyToOne
 	@JoinColumn(referencedColumnName="id_categoria", name="id_categoria")
@@ -84,6 +80,18 @@ public class Anuncio implements Serializable {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+	
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(String pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	@Override
