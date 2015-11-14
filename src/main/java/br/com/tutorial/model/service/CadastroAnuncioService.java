@@ -6,6 +6,7 @@ import br.com.tutorial.model.CadastroDTO;
 import br.com.tutorial.model.dao.AnuncioDAO;
 import br.com.tutorial.model.dao.CategoriaDAO;
 import br.com.tutorial.model.dao.UfDAO;
+import br.com.tutorial.model.dao.UsuarioDAO;
 import br.com.tutorial.model.entity.Anuncio;
 import br.com.tutorial.model.entity.Categoria;
 import br.com.tutorial.model.entity.UF;
@@ -35,6 +36,10 @@ public class CadastroAnuncioService {
 	 * @param cadastro
 	 */
 	public void salvarAnuncio(CadastroDTO cadastro){
+		//Salva o usuario
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		usuarioDAO.salvarUsuario(cadastro.getUsuario());
+		
 		//salva o anuncio
 		AnuncioDAO dao = new AnuncioDAO();
 		dao.salvarAnuncio(cadastro.getAnuncio());

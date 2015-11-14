@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "anuncio")
@@ -22,15 +25,19 @@ public class Anuncio extends BaseEntity implements Serializable {
 	@Column(name="id_anuncio")
 	private Long id;
 
+	@NotBlank
 	@Column(name="titulo")
 	private String titulo;
 
+	@NotBlank
 	@Column(name="descricao")
 	private String descricao;
 
+	@NotBlank
 	@Column(name="sigla_uf")
 	private String uf;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(referencedColumnName="id_categoria", name="id_categoria")
 	private Categoria categoria;
